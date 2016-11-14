@@ -1,0 +1,6 @@
+<h1>Edit Post 🍏</h1>
+
+<%= form_for @post do |f| %>
+  <%= render partial: 'form', layout: false, locals: { f: f } %>
+<% end %>
+<%= link_to 'See more posts', postss_path %>

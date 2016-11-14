@@ -1,0 +1,29 @@
+<% provide(:title, 'Edit User') %>
+<h1>Edit your profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, 'Confirm Password' %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.submit "Save changes" %>
+  </p>
+<% end %>
