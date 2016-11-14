@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_to user
+      redirect_back_or user
     else
       flash[:danger] = 'Invalid email or password'
       render 'new'
@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to register_path #will change to root page when I have static page
+    redirect_to signin_path #will change to root page when I have static page
   end
 end

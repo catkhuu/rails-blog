@@ -1,0 +1,12 @@
+<% provide(:title, 'Your SplootBlog Community') %>
+<h1>SplootBlog Community 🐶</h1>
+
+  <% if !@users.empty? %>
+    <ul class="users-list">
+      <% @users.each do |user| %>
+        <li><%= link_to user.username, user %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There aren't any users. <%= link_to 'Join our community!', register_path %></p>
+  <% end %>

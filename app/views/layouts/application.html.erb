@@ -9,13 +9,14 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="notice"><%= flash[:success] %></div>
+    <div class="alert"><%= flash[:danger] %></div>
 
     <nav>
-      <li><%= link_to 'Home' %></li>
+      <li><%= link_to 'Home', users_path %></li>
       <% if logged_in? %>
         <li><%= link_to 'My Account', current_user %></li>
+        <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
         <li><%= link_to 'Sign Out', signout_path, method: 'delete' %></li>
       <% else %>
         <li><%= link_to 'Register', register_path %></li>
