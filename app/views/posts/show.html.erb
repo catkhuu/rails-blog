@@ -1,0 +1,26 @@
+<h2>My new post</h2>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<h2>Comments</h2>
+<% if @comments %>
+  <%= render @comments %> <!-- render will iterate over @comments. render knows local will 'comment' due to naming of partial as _comment  -->
+<% else %>
+  <p>This post has no comments</p>
+<% end %>
+
+<h2>Add a comment:</h2>
+
+<%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+
+<%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'See more posts', posts_path %>

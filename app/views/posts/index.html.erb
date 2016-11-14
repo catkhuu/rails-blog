@@ -1,0 +1,36 @@
+
+<h2 class="center align">Community Posts</h2>
+
+<%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+
+  <div class="container">
+  <div class="col s10">
+    <%= link_to 'New post', new_post_path %>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s10">
+        <table class="highlight responsive-table">
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+          </tr>
+
+          <% if @posts %>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.content %></td>
+            <td><%= link_to 'Show', post_path(post) %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Delete', post_path(post), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+          <% else %>
+            <p>Sorry, there aren't any posts at this moment. Please check back later 🙃</p>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>

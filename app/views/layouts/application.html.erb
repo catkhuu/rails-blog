@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
     <title>Blog</title>
     <%= csrf_meta_tags %>
 
@@ -13,15 +20,19 @@
     <div class="alert"><%= flash[:danger] %></div>
 
     <nav>
-      <li><%= link_to 'Home', users_path %></li>
-      <% if logged_in? %>
-        <li><%= link_to 'My Account', current_user %></li>
-        <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
-        <li><%= link_to 'Sign Out', signout_path, method: 'delete' %></li>
-      <% else %>
-        <li><%= link_to 'Register', register_path %></li>
-        <li><%= link_to 'Sign In', signin_path %></li>
-      <% end %>
+      <div class="nav-wrapper red accent-3">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Home', users_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to 'Community Posts', posts_path %></li>
+          <li><%= link_to 'My Account', current_user %></li>
+          <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Sign Out', signout_path, method: 'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Register', register_path %></li>
+          <li><%= link_to 'Sign In', signin_path %></li>
+        <% end %>
+      </div>
     </nav>
     <%= yield %>
   </body>

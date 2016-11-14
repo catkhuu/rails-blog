@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   root 'sessions#new'
   resources :users
+  resources :posts do
+    resources :comments
+  end
 end
